@@ -11,8 +11,6 @@
 [![Downloads count][badge_downloads_count]][link_packagist]
 [![License][badge_license]][link_license]
 
-This package provides logging for Laravel events (events must implements special interface).
-
 ## Install
 
 Require this package with composer using the following command:
