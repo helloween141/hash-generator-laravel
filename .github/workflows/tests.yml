@@ -24,7 +24,7 @@ jobs: # Docs: <https://git.io/JvxXE>
         php: ['8.0']
     steps:
       - name: Check out code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Setup PHP, with composer and extensions
         uses: shivammathur/setup-php@v2 # Action page: <https://github.com/shivammathur/setup-php>
@@ -81,7 +81,7 @@ jobs: # Docs: <https://git.io/JvxXE>
     runs-on: ubuntu-20.04
     steps:
       - name: Check out code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Lint changelog file
         uses: docker://avtodev/markdown-lint:v1 # Action page: <https://github.com/avto-dev/markdown-lint>
