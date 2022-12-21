@@ -85,7 +85,8 @@ class OpenSslReversibleHash implements ReversibleHashInterface
             $data,
             $this->cipher_algo,
             $this->passphrase,
-            $this->options
+            $this->options,
+            $this->getInitVector()
         );
 
         if (\is_bool($encrypted_data)) {
@@ -110,7 +111,8 @@ class OpenSslReversibleHash implements ReversibleHashInterface
             $code,
             $this->cipher_algo,
             $this->passphrase,
-            $this->options
+            $this->options,
+            $this->getInitVector()
         );
 
         if (\is_bool($decrypted_data)) {
@@ -118,5 +120,13 @@ class OpenSslReversibleHash implements ReversibleHashInterface
         }
 
         return $decrypted_data;
+    }
+
+    /**
+     * @return string
+     */
+    protected function getInitVector(): string
+    {
+        return \md5($this->passphrase, true);
     }
 }

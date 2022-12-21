@@ -31,7 +31,7 @@ $ composer require avto-dev/hash-generator-laravel "^1.0"
 <?php
 
 return [
-    'cipher_algo' => 'rc4',
+    'cipher_algo' => 'aes-128-cfb',
     'passphrase'  => 'pass_phrase', // Случайную строку
     'options'     => 0,
 ];

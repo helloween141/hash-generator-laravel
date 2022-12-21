@@ -17,23 +17,23 @@ class OpenSslReversibleHashTest extends AbstractTestCase
     public function testGenerate(): void
     {
         $ssl_hash = new OpenSslReversibleHash(
-            'rc4',
+            'aes-128-cfb',
             'salt',
             \OPENSSL_ZERO_PADDING
         );
 
-        $this->assertEquals('TnQvZi9qYkFrb0dVVE44PQ==', $ssl_hash->generate('secret data'));
+        $this->assertEquals('bVFxWmpkekNhS09BTEI0PQ==', $ssl_hash->generate('secret data'));
     }
 
     public function testRegenerate(): void
     {
         $ssl_hash = new OpenSslReversibleHash(
-            'rc4',
+            'aes-128-cfb',
             'salt',
             \OPENSSL_ZERO_PADDING
         );
 
-        $this->assertEquals('secret data', $ssl_hash->regenerate('TnQvZi9qYkFrb0dVVE44PQ=='));
+        $this->assertEquals('secret data', $ssl_hash->regenerate('bVFxWmpkekNhS09BTEI0PQ=='));
     }
 
     public function testRegenerateNormalizationFail(): void
@@ -42,7 +42,7 @@ class OpenSslReversibleHashTest extends AbstractTestCase
         $this->expectExceptionMessage('Hash "#iu3498r" do not normalized');
 
         $ssl_hash = new OpenSslReversibleHash(
-            'rc4',
+            'aes-128-cfb',
             'salt',
             \OPENSSL_ZERO_PADDING
         );

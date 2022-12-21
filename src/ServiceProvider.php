@@ -19,7 +19,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
             $config = $app->make(Repository::class);
 
             return new OpenSslReversibleHash(
-                $config->get('hash-generator.cipher_algo', 'rc4'),
+                $config->get('hash-generator.cipher_algo', 'aes-128-cfb'),
                 $config->get('hash-generator.passphrase', 'secret'),
                 $config->get('hash-generator.options', 0),
             );
