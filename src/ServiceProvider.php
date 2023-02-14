@@ -18,11 +18,16 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
             /** @var Repository $config */
             $config = $app->make(Repository::class);
 
-            return new OpenSslReversibleHash(
-                $config->get('hash-generator.cipher_algo', 'aes-128-cfb'),
-                $config->get('hash-generator.passphrase', 'secret'),
-                $config->get('hash-generator.options', 0),
-            );
+            /** @var string $cipher_algo */
+            $cipher_algo = $config->get('hash-generator.cipher_algo', 'aes-128-cfb');
+
+            /** @var string $passphrase */
+            $passphrase = $config->get('hash-generator.passphrase', 'secret');
+
+            /** @var int $options */
+            $options = $config->get('hash-generator.options', 0);
+
+            return new OpenSslReversibleHash($cipher_algo, $passphrase, $options);
         });
     }
 }
